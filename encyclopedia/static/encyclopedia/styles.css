@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    background-color: white;
+}
+
+code {
+    white-space: pre;
+}
+
+h1 {
+    margin-top: 0px;
+    padding-top: 20px;
+}
+
+textarea {
+    height: 70vh;
+    width: 80%;
+    border-radius: 3px;
+    border-width: .5px;
+}
+
+textarea:focus{
+    outline-color: #3366cc;
+}
+
+.main {
+    padding: 20px;
+}
+
+.search {
+    width: 100%;
+    font-size: 15px;
+    line-height: 15px;
+}
+
+.search:focus{
+    outline-color: #3366cc;
+}
+
+.sidebar {
+    background-color: #f0f0f0;
+    height: 110vh;
+    padding: 20px 20px 20px 30px;
+    box-shadow: 0px 0px 15px #f0f0f0;
+}
+
+.sidebar h2 {
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.side-links{
+    margin-top: 10px;
+}
+
+.side-links a{
+    font-size: small;
+}
+
+#edit_btn{
+    float: right;
+    margin-right: 10px;
+}
