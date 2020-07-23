@@ -1,0 +1,44 @@
+{% extends "auctions/layout.html" %}
+
+{% load static %}
+
+{% block body %}
+    <div class="container">
+        {% if search_result %}
+            {% if count %}
+                <h2>{{search_result}}</h2>
+            {% endif %}
+        {% else %}
+            <h2>Active Listings</h2>
+        {% endif %}
+        <div class="list">
+            {% for list in listings %}
+                <div class="list-item">
+                    <div class="left">
+                        <center>
+                            <a href="{% url 'listing' list.id %}">
+                                <img src="{% static list.image %}">
+                            </a>
+                        </center>
+                    </div>
+                    <div class="right">
+                        <a href="{% url 'listing' list.id %}">
+                            <h5>{{list.title}}</h5>
+                        </a>
+                        <small>Listing ID: {{list.id}}</small><br>
+                        Price: &nbsp;<span class="price">US ${{list.current_bid}}</span><br>
+                        <span class="create-time">Created: {{list.create_time}}</span><br>
+                        <img src="{% static 'auctions/Images/eye.png' %}" height="8em">&nbsp;<span class="watch">25 watchers</span>
+                    </div>
+                </div>
+                <hr>
+            {% empty %}
+                <center>
+                    <br>
+                    <h4>Sorry, no results found!</h4>
+                    Please check the spelling or try searching for something else
+                </center>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
