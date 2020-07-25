@@ -1,0 +1,289 @@
+body {
+    padding: 0px;
+    word-break: break-all;
+}
+.navbar{
+    display: flex;
+    height: 14vh;
+    padding: 20px 30px 20px 30px;
+    justify-content: space-between;
+}
+.right-nav{
+    display: flex
+}
+.right-nav input[type=text]{
+    border: 1px solid #59c65b;
+    height: 35px;
+    width: 20vw;
+    border-radius: 2px;
+    padding: 0px 10px 0px 10px;
+}
+.right-nav input[type=text]:focus{
+    outline: none;
+    box-shadow: inset 0 0 2.5px #59c65b;
+    transition-duration: 100ms;
+}
+.right-nav ::placeholder{
+    color: #59c65b;
+}
+.right-nav input[type=submit]{
+    background-color: #59c65b;
+    color: white;
+    padding-left: 25px;
+    padding-right: 25px;
+    height: 35px;
+    border-radius: 2px;
+    margin: 5px;
+    border: none;
+    font-weight: 500;
+}
+.right-nav input[type=submit]:focus{
+    outline: none;
+    background-color: #4aba4c;
+    transition-duration: 100ms;
+}
+.menu{
+    background-color: rgb(89, 198, 91);
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 30px 0px 30px;
+    color: #2b2b2b;
+    margin-bottom: 1em;
+}
+.menu a{
+    text-decoration: none;
+    font-weight: 500;
+    color: #3a3a3a;
+}
+.menu a:hover{
+    color: #000000;
+    transition-duration: 200ms;
+}
+
+.list{
+    margin-top: 30px;
+}
+
+.list-item{
+    display: flex;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+    height: 13em;
+    width: 100%;
+}
+.list-item > .left{
+    width: 30%;
+    padding: 5px;
+}
+.list-item > .right{
+    width: 64%;
+    padding: 10px 10px 10px 25px;
+    line-height: 1.5em;
+}
+
+.list-item > .right .right-bottom{
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-item > .right .right-bottom-right{
+    margin-right: 3%;
+    width: 20%;
+    padding-top: 3em;
+}
+
+.list-item > .right .right-bottom-right img{
+    width: 100%;
+}
+
+.list-item > .far-right_watchlist{
+    padding-top: 12px;
+    margin-right: 0px;
+    margin-left: auto;
+}
+.far-right_watchlist button:hover{
+    color: #cb2431;
+}
+
+.list-item > .left img{
+    max-height: 12.5em;
+    max-width: 100%;
+}
+
+.price{
+    font-size: 1.2em;
+    font-weight: 500;
+    line-height: 2em;
+}
+
+.list-item > .right .create-time{
+    color: grey;
+    font-size: .7em;
+}
+
+.list-item > .right .watch{
+    font-size: .8em;
+}
+
+.c_form{
+    margin: 0px 10px 0px 10px
+}
+.c_form input[type=text]{
+    width: 20em;
+}
+
+.c_row{
+    width: 100%;
+    display: flex;
+    margin-top: 8px;
+}
+
+.c_row_btn{
+    margin-top: 12px;
+}
+
+.row-left{
+    width: 22%;
+}
+
+.row-right{
+    width: 73%;
+}
+
+.star{
+    color: red;
+}
+
+.create-btn{
+    background-color: #59c65b;
+    color: white;
+    padding: .25em 2em .3em 2em;
+    height: 35px;
+}
+
+.create-btn:hover{
+    color: white;
+}
+
+.create-btn:focus{
+    background-color: #4aba4c;
+}
+
+#cancel{
+    color: grey;
+    background-color: white;
+    border: 1px solid grey;
+}
+#cancel:hover{
+    color: dimgray;
+    border: 1px solid dimgray;
+}
+
+.listing-upper{
+    width: 100%;
+    height: 24.5em;
+    display: flex;
+    box-sizing: border-box;
+    margin-top: 30px;
+}
+
+.listing-upper > .listing-left{
+    width: 30%;
+    padding: 5px;
+    width: 250px;
+    position: relative;
+}
+
+.listing-upper > .listing-right{
+    width: 70%;
+    padding: 15px 10px 10px 50px;
+    line-height: 1.5em;
+}
+
+.listing-upper > .listing-left img{
+    max-height: 24em;
+    max-width: 100%; 
+    position: absolute;  
+    top: 0;  
+    bottom: 0;  
+    left: 0;  
+    right: 0;  
+    margin: auto;
+}
+
+.bid-form{
+    margin-top: 8px;
+}
+
+.bid-form > input[type=submit]{
+    background-color: #59c65b;
+    color: white;
+    height: 30px;
+    padding: 0px 15px 0px 15px;
+    margin-top: -5px;
+}
+
+.bid-form > input[type=submit]:hover{
+    color: white;
+}
+
+.bid-form > input[type=submit]:focus{
+    background-color: #4aba4c;
+}
+
+#listing-description{
+    font-size: 14px;
+    margin-left: 20px;
+}
+
+.watchlist-div{
+    line-height: 10px;
+    box-sizing: border-box;
+    float: right;
+    padding-right: 6em;
+    display: flex;
+}
+.watchlist-div img{
+    vertical-align: middle;
+}
+
+.message-div{
+    margin-top: 75px;
+}
+
+.hid-btn{
+    border: none;
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+}
+.hid-btn:hover{
+    color: #0056b3;
+    text-decoration: underline;
+}
+.hid-btn:focus{
+    outline: none;
+}
+
+.sold-div{
+    padding: 5px;
+    width: 10em;
+    position: relative;
+    margin-right: 0px;
+}
+.sold-div img{
+    max-height: 24em;
+    max-width: 100%; 
+    position: absolute;  
+    top: 0;  
+    bottom: 0;  
+    left: 0;  
+    right: 0;  
+    margin: auto;
+}
+
+.regular-div{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
