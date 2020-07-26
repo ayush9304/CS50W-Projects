@@ -1,0 +1,167 @@
+{% extends 'auctions/layout.html' %}
+
+{% load static %}
+
+{% block body %}
+    <div class="container">
+        <div class="listing-upper">
+            <div class="listing-left">
+                <center>
+                    <img src="{% static list.image %}">
+                </center>
+            </div>
+            <div class="listing-right">
+                <div class="top">
+                    <h4>{{list.title}}</h4>
+                    <small>Listing ID : {{list.id}}&nbsp;&nbsp;|&nbsp;&nbsp;Created : {{list.create_time}}</small><br>
+
+
+
+                    <div class="watchlist-div">
+                        <div>
+                            <span>
+                                {% if watchlist %}
+                                    <form action="{% url 'remove_watchlist' %}" method="POST">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="id" value="{{list.id}}">
+                                        <input type="hidden" name="origin" value="listing/{{list.id}}">
+                                        <button type="submit" class="hid-btn">
+                                            <span style="font-weight: bolder;">&#10003;</span> Added to watchlist
+                                        </button>
+                                    </form>
+                                {% else %}
+                                    <form action="{% url 'add_watchlist' %}" method="POST">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="id" value="{{list.id}}">
+                                        <input type="hidden" name="origin" value="listing/{{list.id}}">
+                                        <button type="submit" class="hid-btn">&#10010; Add to watchlist</button>
+                                    </form>
+                                    
+                                {% endif %}
+                        </div>
+                        <div>
+                        </span>&emsp;|&emsp;
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-eye-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                <path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                              </svg>
+                            &ensp;<span class="watch">{{watchers_count}} watcher(s)</span>
+                        </div>
+                    </div>
+
+
+
+                    <div class="regular-div">
+                        <div class="info-div">
+                            <br>
+                            Current bid : &nbsp;<span class="price">US ${{list.current_bid}}</span><br>
+                            <small>You are the highest bidder.</small>
+                            <form action="{% url 'place_bid' list.id %}" class="bid-form" method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="id" value="{{list.id}}">
+                                {% if list.status == "active" %}
+                                    {% if list.starting_bid == list.current_bid %}
+                                        <input type="number" name="bid" min="{{list.starting_bid}}" required="required">
+                                    {% elif list.starting_bid < list.current_bid %}
+                                        <input type="number" name="bid" min="{{list.current_bid | add:'1'}}" required="required">
+                                    {% endif %}
+                                    <input type="submit" class="btn Button" value="Place Bid">
+                                {% else %}
+                                    {% if list.starting_bid == list.current_bid %}
+                                        <input type="number" name="bid" min="{{list.starting_bid}}" disabled>
+                                    {% elif list.starting_bid < list.current_bid %}
+                                        <input type="number" name="bid" min="{{list.current_bid | add:'1'}}" disabled>
+                                    {% endif %}
+                                    <input type="submit" class="btn Button" value="Place Bid" disabled>
+                                {% endif %}
+                                &nbsp;&nbsp;
+                                {% if success %}
+                                    <span style="color: limegreen ">{{bid_message}}</span>
+                                {% else %}
+                                    <span class="star">{{bid_message}}</span>
+                                {% endif %}
+                            </form>
+                            <small>{{no_of_bids}} bid(s) so far.</small>
+                            <br><br>
+                            <h6>Details</h6>
+                            <ul>
+                                <li>Condition : {{list.condition}}</li>
+                                <li>Category : {{list.category}}</li>
+                                <li>Seller : {{creater}}</li>
+                                <li>Status : {{list.status}}</li>
+                            </ul><br>
+                        </div>
+                        {% if list.status == "sold" %}
+                            <div class="sold-div">
+                                <img src="{% static 'auctions/Images/sold.png' %}">
+                            </div>
+                        {% elif list.status == "unsold" %}
+                            <div class="sold-div">
+                                <img src="{% static 'auctions/Images/unsold.png' %}">
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="listing-middle">
+            <h5>Description</h5>
+            <p id="listing-description">{{list.description}}</p>
+        </div>
+        <div class="listing-lower">
+            {% if bids %}
+                <h3>
+                    <form action="{% url 'auction_command' %}" method="POST">
+                        {% csrf_token %}
+                        Recent Bids&nbsp;&nbsp;
+                        <input type="hidden" value="{{list.id}}" name="id">
+                        {% if creater_view %}
+                            {% if list.status == "active" %}
+                                <button class="btn Button">End Auction</button>
+                            {% elif list.status == "sold" %}
+                                <button class="btn Button" disabled>End Auction</button>
+                            {% elif list.status == "unsold" %}
+                                <button class="btn Button">Start Auction</button>
+                            {% endif %}
+                        {% endif %}
+                    </form>
+                </h3>
+                <br>
+                <div class="bids-div">
+                    <ul class="responsive-table">
+                        <li class="table-header">
+                            <div class="col col-1">Bid Id</div>
+                            <div class="col col-2">Bidder</div>
+                            <div class="col col-3">Bid Amount</div>
+                            <div class="col col-4">Bid Time</div>
+                        </li>
+                        {% for bid in bids %}
+                            <li class="table-row">
+                                <div class="col col-1" data-label="Bid Id">{{bid.id}}</div>
+                                <div class="col col-2" data-label="Bidder">{{bid.bidder}}</div>
+                                <div class="col col-3" data-label="Bid Amount">US ${{bid.bid}}</div>
+                                <div class="col col-4" data-label="Bid Time">{{bid.time}}</div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <center>
+                    <a href="#">See all</a>
+                </center>
+            {% endif %}
+        </div>
+        <!--
+        <div class="listing-far-lower">
+            <h4>
+                <form action="#">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{list.id}}">
+                    Comments&nbsp;&nbsp;
+                    <button type="submit" class="btn Button">&#10010; Add comment</button>
+                </form>
+            </h4>
+            <div class="comment-div"></div>
+        </div>
+        -->
+    </div>
+{% endblock %}
