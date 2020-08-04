@@ -1,0 +1,213 @@
+
+#preloader{
+    background-image: url('/static/mail/Images/loading.gif');
+    background-position: center;
+    background-repeat: no-repeat;
+    size: cover;
+}
+
+.star{
+    color: red;
+}
+
+.user-box{
+    width: 45%;
+    height: 90vh;
+    border-radius: 5px;
+    display: grid;
+    place-items: center;
+    margin-top: 5vh;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 0 13px rgba(0, 0, 0, .2);
+    padding: 10px 50px 10px 50px;
+}
+
+.user-box form > div{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.name-input{
+    display: flex;
+    place-items: center;
+    justify-content: space-between;
+}
+.name-input div{
+    width: 48%;
+}
+
+
+.list_email{
+    border: .1px solid rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0,0,0,.1);
+    display: flex;
+    justify-content: space-between;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.list_email:hover{
+    border-left-color: rgba(0,0,0,.1);
+    border-right-color: rgba(0,0,0,.1);
+    border-bottom-color: rgba(0,0,0,.1);
+    box-shadow: 0 .5px 5px rgba(0,0,0,.1);
+    cursor: pointer;
+    transform: scaleZ(1.5);
+}
+
+.list_name{
+    width: 20%;
+}
+.list_subject{
+    width: 60%;
+}
+.list_time{
+    width: 20%;
+    justify-content: right;
+}
+
+.navbar{
+    height: 11vh;
+    background-color: white;
+}
+
+.search-bar{
+    background-color: rgba(241, 243, 244, .6);
+    width: 48%;
+    padding-left: 10px;
+}
+.search-bar form{
+    display: flex;
+}
+.search-bar input{
+    background: none;
+    border: none;
+    flex: 1;
+}
+.search-bar input:focus{
+    outline: none;
+}
+.search-bar button{
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+}
+.search-bar button:hover{
+    color: white;
+    background-color: rgba(0, 123, 255, 1);
+}
+.search-bar button:focus{
+    color: white;
+    background-color: rgba(0, 123, 255, 1);
+    box-shadow: inset 0 0 0 1px white;
+    
+}
+
+.nav-right{
+    display: flex;
+}
+.user_name{
+    font-size: 1.05em;
+    box-sizing: border-box;
+}
+.user_name span{
+    vertical-align: middle;
+}
+
+.inbox-body{
+    display: flex;
+    position: relative;
+    top: 11vh;
+}
+
+.sidebar{
+    width: 15%;
+    display: block;
+    position: fixed;
+    padding: 20px 10px 20px 15px;
+}
+.sidebar div{
+    padding: 4px 12px;
+}
+.sidebar div:hover{
+    cursor: pointer;
+    background-color: rgba(0, 91, 230, .1);
+}
+.sidebar .active:hover{
+    background-color: rgba(0, 91, 230, .3);
+}
+.sidebar div:active{
+    cursor: pointer;
+    background-color: rgba(0, 91, 230, .3);
+}
+.sidebar button{
+    margin-bottom: 10px;
+}
+
+.sidebar .active{
+    background-color: rgba(0, 91, 230, .3);
+    border-left:  2px solid rgba(0, 91, 230, 1);
+}
+
+.main{
+    position: relative;
+    left: 15%;
+    width: 85%;
+    padding: 0px 20px 20px 20px;
+}
+.main-top{
+    height: 6vh;
+    position: sticky;
+    top: 11vh;
+    background-color: white;
+    border-bottom: .5px solid rgba(0, 0, 0, .2);
+}
+
+#email-view{
+    padding: 15px;
+}
+#compose-view{
+    padding-top: 30px;
+}
+
+.compose-input-to, .compose-input-subject, .compose-input-body{
+    border-bottom: .5px solid rgba(0, 0, 0, .2);
+    padding: 1px .8% 8px .8%;
+    margin: 10px 20px;
+}
+.compose-input-send{
+    margin: 10px 20px 0px 20px;
+}
+.compose-input-send input{
+    padding: 5px 20px;
+}
+.compose-input-subject input{
+    border: none;
+    width: 100%;
+}
+.compose-input-body textarea{
+    border: none;
+    width: 100%;
+    height: 54vh;
+}
+.compose-input-to span{
+    padding: 6px 20px;
+    border-radius: 3px;
+    background-color: rgba(10, 91, 230, .1);
+    color: #1a4382;
+    margin-right: .5%;
+}
+.compose-input-to input{
+    border: none;
+    width: 80%;
+}
+.compose-input-to input:focus, .compose-input-subject input:focus, .compose-input-body textarea:focus{
+    outline: none;
+}
+
+#email-view{
+    min-height: 100px;
+    padding: 5px 20px 10px 20px;
+    display: none;
+}
