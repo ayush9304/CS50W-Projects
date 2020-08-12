@@ -1,0 +1,42 @@
+{% extends "mail/layout2.html" %}
+
+{% load static %}
+
+{% block title %}
+    Sign In | Mail
+{% endblock  %}
+
+{% block body %}
+    <div class="user-box">
+        <div>
+            <br>
+            <center>
+                <img src="{% static 'mail/Images/mail_logo2.png' %}" height="30em">
+                <h2>Sign In</h2>
+            </center>
+        </div>
+    
+        <form action="{% url 'login' %}" method="post" style="width: 100%;" id='signin-form'>
+            {% csrf_token %}
+            <div class="form-group">
+                <input class="form-control" type="email" name="email" placeholder="Email Address" value="{{email | default:''}}" autocomplete="off" autofocus>
+                <span class="star"><small id='email_msg'></small></span>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="password" name="password" placeholder="Password" autocomplete="off">
+                <span class="star"><small id='pwd_msg'>{{message | default:''}}</small></span>
+            </div>
+            <center>
+                <input class="btn btn-primary" type="submit" value="Sign In">
+            </center>
+        </form>
+    
+        <div>
+            Already have an account? <a href="{% url 'register' %}">Sign Up</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'mail/signin.js' %}"></script>
+{% endblock %}
